@@ -1,19 +1,27 @@
-import React from "react";
-import { EntityConfig, FieldConfig, FieldType } from "../config/main/schema";
+import React, { useState } from "react";
+import { EntityConfig, FieldConfig } from "../config/main/schema";
 
 type AddModalProps = {
   onClose: () => void;
-  onSubmit: () => void;
+  onSubmit: (e: Record<string, FieldConfig>) => void;
   entityConfig: EntityConfig;
 };
 
 const AddModal = ({ onClose, onSubmit, entityConfig }: AddModalProps) => {
+  const [formData, setFormData] = useState<Record<string, any>>({
+    isUnassigned: false,
+  });
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     field: FieldConfig
   ) => {
-    console.log(e.target.value);
+    const value = field.type === "boolean" ? e.target.checked : e.target.value;
+    setFormData({ ...formData, [field.name]: value });
   };
+  const isFormValid = !Object.keys(entityConfig.fields)
+    .filter((field) => field !== "id")
+    .some((field) => formData[field] === undefined || formData[field] === "");
   return (
     <div className="modal show d-block" tabIndex={-1}>
       <div className="modal-dialog">
@@ -62,9 +70,13 @@ const AddModal = ({ onClose, onSubmit, entityConfig }: AddModalProps) => {
               Close
             </button>
             <button
-              onClick={onSubmit}
+              onClick={() => {
+                onSubmit(formData);
+                onClose();
+              }}
               type="button"
               className="btn btn-primary bg-warning text-dark"
+              disabled={!isFormValid}
             >
               Save changes
             </button>
