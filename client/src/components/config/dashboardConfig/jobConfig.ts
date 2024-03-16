@@ -76,6 +76,16 @@ const jobConfig: EntityConfig = {
                     description: 'Number of cities:'
                 },
                 {
+                    comparisonArgs: ['operatingUnit'],
+                    comparisonType: 'getAmount',
+                    description: 'Number of operating units:'
+                },
+                {
+                    comparisonArgs: ['clientId'],
+                    comparisonType: 'getAmount',
+                    description: 'Number of clients:'
+                },
+                {
                     comparisonArgs: ['isUnassigned', true],
                     comparisonType: 'getFilterBooleanAmount',
                     description: 'Unassigned jobs:'
