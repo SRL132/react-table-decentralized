@@ -46,6 +46,16 @@ const getQuery = (
       if (filterOption.filterBy === "isUnassigned") {
         return `${filterOption.filterBy}: ${filterOption.filterParam}`;
       }
+      if (filterOption.filterBy === "totalHours") {
+        return `totalHours: ${
+          isNaN(Number(filterOption.filterParam)) ? 0 : filterOption.filterParam
+        }`;
+      }
+      if (filterOption.filterBy === "Jobs_id") {
+        return `Jobs_id: ${
+          isNaN(Number(filterOption.filterParam)) ? 0 : filterOption.filterParam
+        }`;
+      }
       const startWithClause = `${filterOption.filterBy}_starts_with: "${filterOption.filterParam}"`;
       return startWithClause;
     })
@@ -71,10 +81,13 @@ const getQuery = (
           return `{totalHours: ${fetchOptions?.filterOptions?.[0]?.filterParam}}`;
         }
         if (filterOption !== "totalHours" && filterOption !== "Jobs_id") {
-          console.log("inside fetchOptions", filterOption);
           return `{${filterOption}_starts_with: "${fetchOptions?.filterOptions?.[0]?.filterParam}"}`;
         }
       })}]`;
+
+    if (filterOptions?.some((option) => option?.filterBy === "isUnassigned")) {
+      whereClause += ", and: [{ isUnassigned: true }]";
+    }
   }
 
   const skip = (page - 1) * fetchOptions.itemsPerPage;
@@ -103,11 +116,6 @@ const client = new ApolloClient({
 });
 
 //todo: add sorting and filtering
-
-//case 1: no filters --covered
-//case 2: sort asc
-//case 3: sort desc
-//case 3: filter
 //case 4: all filter
 
 export const fetchJobs = async (
@@ -127,11 +135,10 @@ export const fetchJobs = async (
   },
   allFields: Record<string, FieldConfig>
 ) => {
-  console.log(fetchOptions);
   const query = getQuery(page, fetchOptions, allFields);
-  console.log(query);
+
   const { data } = await client.query({ query: query });
-  console.log(data);
+
   return data?.jobAddeds;
 };
 

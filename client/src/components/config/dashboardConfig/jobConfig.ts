@@ -17,7 +17,7 @@ const jobConfig: EntityConfig = {
     fields:
     {
         Jobs_id: {
-            name: 'id',
+            name: 'Jobs_id',
             type: 'text',
             label: 'ID',
             searcheable: true,
