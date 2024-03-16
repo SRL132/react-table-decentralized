@@ -65,10 +65,10 @@ const getQuery = (
       })
       .map((filterOption) => {
         if (
-         ( filterOption === "totalHours" || filterOption ==="Jobs_id")  &&
+          (filterOption === "totalHours" || filterOption === "Jobs_id") &&
           !isNaN(Number(fetchOptions?.filterOptions?.[0]?.filterParam))
         ) {
-          return `{totalHours_starts_with: ${fetchOptions?.filterOptions?.[0]?.filterParam}}`;
+          return `{totalHours: ${fetchOptions?.filterOptions?.[0]?.filterParam}}`;
         }
         if (filterOption !== "totalHours" && filterOption !== "Jobs_id") {
           console.log("inside fetchOptions", filterOption);
