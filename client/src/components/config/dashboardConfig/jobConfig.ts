@@ -32,7 +32,7 @@ const jobConfig: EntityConfig = {
         operatingUnit: {
             name: 'operatingUnit',
             type: 'text',
-            label: 'Operating unit'
+            label: 'Operating Unit'
         },
         officePostalCode: {
             name: 'officePostalCode',

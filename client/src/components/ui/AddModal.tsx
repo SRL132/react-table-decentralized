@@ -20,7 +20,7 @@ const AddModal = ({ onClose, onSubmit, entityConfig }: AddModalProps) => {
     setFormData({ ...formData, [field.name]: value });
   };
   const isFormValid = !Object.keys(entityConfig.fields)
-    .filter((field) => field !== "id")
+    .filter((field) => field !== "Jobs_id")
     .some((field) => formData[field] === undefined || formData[field] === "");
   return (
     <div className="modal show d-block" tabIndex={-1}>

@@ -44,9 +44,11 @@ const getQuery = (page = 0, fetchOptions: FetchOptions) => {
     : "";
   console.log(whereClause);
   const skip = (page - 1) * fetchOptions.itemsPerPage;
+    const orderBy = fetchOptions.sortOptions?.sortBy
+    const orderDirection = fetchOptions.sortOptions?.sortOrder
 
   let query = gql`{
-    jobAddeds(first: ${fetchOptions.itemsPerPage}, skip: ${skip}, where: {${whereClause}}) {
+    jobAddeds(first: ${fetchOptions.itemsPerPage}, skip: ${skip}, orderBy: ${orderBy}, orderDirection: ${orderDirection}, where: {${whereClause}}) {
       id
       Jobs_id
       originalId
