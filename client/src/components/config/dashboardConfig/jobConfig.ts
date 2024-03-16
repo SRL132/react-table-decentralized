@@ -1,4 +1,4 @@
-import { reactiveFetchJobs, fetchAllJobs } from "../../../api/jobs-api";
+import {fetchJobs, fetchAllJobs} from "../../../api/graph-api";
 import { EntityConfig } from "../main/schema";
 
 export interface job {
@@ -16,7 +16,7 @@ export interface job {
 const jobConfig: EntityConfig = {
     fields:
     {
-        id: {
+        Jobs_id: {
             name: 'id',
             type: 'integer',
             label: 'ID',
@@ -33,11 +33,6 @@ const jobConfig: EntityConfig = {
             name: 'operatingUnit',
             type: 'text',
             label: 'Operating unit'
-        },
-        officeCity: {
-            name: 'officeCity',
-            type: 'text',
-            label: 'Office city',
         },
         officePostalCode: {
             name: 'officePostalCode',
@@ -140,7 +135,7 @@ const jobConfig: EntityConfig = {
         //     ]
         // }
     ],
-    fetch: reactiveFetchJobs,
+    fetch: fetchJobs,
     fetchAll: fetchAllJobs,
     infiniteQueryName: 'infiniteJobData',
     normalQueryName: 'allJobData'

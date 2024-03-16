@@ -14,8 +14,9 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
     //@ts-ignore
     const [state, dispatch] = useContext(context)
     const fields = entityConfig.fields
-    const { data, status, hasNextPage, fetchNextPage, isSuccess
 
+    console.log(fields)
+    const { data, status, hasNextPage, fetchNextPage, isSuccess
     } = useInfiniteQuery([entityConfig.infiniteQueryName, state],
         //@ts-ignore
         ({ pageParam = 1 }) => entityConfig.fetch(pageParam, state), {
@@ -24,7 +25,7 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
             return nextPage
         }
     })
-
+    console.log(data)
     const sortData = (newSortOptions: { sortBy: string; }) => {
         if (state.sortOptions.sortBy !== newSortOptions.sortBy) {
             dispatch({ type: updateSorting, payload: { sortBy: newSortOptions.sortBy, sortOrder: 'asc' } })
@@ -63,9 +64,9 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
                     </thead>
                     <tbody>
                         {
-                            isSuccess && data.pages.map((page) => {
-                                return (page as Array<Record<string, any>>).map((e) => {
-                                    return <tr>
+                            isSuccess && data.pages.length>0 && data.pages.map((page) => {
+                                 return (page as Array<Record<string, any>>).map((e) => {
+                                    return <tr key={e.id}>
                                         {Object.keys(fields).map(fieldString => {
                                             switch (fields[fieldString].type) {
                                                 case ('keyValueArray'):
@@ -83,7 +84,7 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
                                             }
                                         })}
                                     </tr>
-                                })
+                                 })
                             })
                         }
                     </tbody>

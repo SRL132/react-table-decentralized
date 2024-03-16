@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface EntityConfig {
     fields: Record<string, FieldConfig>;
-    fetch: () => unknown;
+    fetch: () => Promise<any>;
     fetchAll: () => unknown;
     infiniteQueryName: string;
     normalQueryName: string;
