@@ -2,18 +2,9 @@
 pragma solidity ^0.8.20;
 
 import {Test, console} from "forge-std/Test.sol";
-import {Jobs} from "../src/Jobs.sol";
+import {Jobs, JobEvents} from "../src/Jobs.sol";
 
-contract JobsTest is Test {
-    event JobAdded(
-        uint256 id,
-        string originalId,
-        string operatingUnit,
-        string officePostalCode,
-        uint256 totalHours,
-        string clientId,
-        bool isUnassigned
-    );
+contract JobsTest is Test, JobEvents {
 
     Jobs public jobs;
 
@@ -30,7 +21,8 @@ contract JobsTest is Test {
         bool isUnassigned
     ) public {
         vm.expectEmit();
-        jobs.addJob(
+        emit JobAdded(
+            1,
             originalId,
             operatingUnit,
             officePostalCode,
@@ -39,8 +31,7 @@ contract JobsTest is Test {
             isUnassigned
         );
 
-        emit JobAdded(
-            1,
+        jobs.addJob(
             originalId,
             operatingUnit,
             officePostalCode,

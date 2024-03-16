@@ -1,7 +1,19 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.20;
 
-contract Jobs {
+contract JobEvents {
+    event JobAdded(
+        uint256 id,
+        string originalId,
+        string operatingUnit,
+        string officePostalCode,
+        uint256 totalHours,
+        string clientId,
+        bool isUnassigned
+    );
+}
+
+contract Jobs is JobEvents{
 
     uint256 public number;
 
@@ -16,16 +28,6 @@ contract Jobs {
     }
 
     Job[] public jobs;
-
-    event JobAdded(
-        uint256 id,
-        string originalId,
-        string operatingUnit,
-        string officePostalCode,
-        uint256 totalHours,
-        string clientId,
-        bool isUnassigned
-    );
 
     function addJob(
         string memory originalId,
