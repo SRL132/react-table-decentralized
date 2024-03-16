@@ -38,6 +38,7 @@ contract JobsTest is Test {
             clientId,
             isUnassigned
         );
+
         emit JobAdded(
             1,
             originalId,
@@ -47,6 +48,7 @@ contract JobsTest is Test {
             clientId,
             isUnassigned
         );
+        
         (
             ,
             string memory jobOriginalId,
@@ -56,6 +58,7 @@ contract JobsTest is Test {
             string memory jobClientId,
             bool jobIsUnassigned
         ) = jobs.jobs(0);
+
         assertEq(jobOriginalId, originalId);
         assertEq(jobOperatingUnit, operatingUnit);
         assertEq(jobOfficePostalCode, officePostalCode);
