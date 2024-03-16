@@ -8,8 +8,6 @@ contract Jobs {
         string operatingUnit,
         string officePostalCode,
         uint256 totalHours,
-        uint256 startDate,
-        uint256 endDate,
         string clientId,
         bool isUnassigned
     );
@@ -21,8 +19,6 @@ contract Jobs {
         string operatingUnit;
         string officePostalCode;
         uint256 totalHours;
-        uint256 startDate;
-        uint256 endDate;
         string clientId;
         bool isUnassigned;
     }
@@ -34,8 +30,6 @@ contract Jobs {
         string memory operatingUnit,
         string memory officePostalCode,
         uint256 totalHours,
-        uint256 startDate,
-        uint256 endDate,
         string memory clientId,
         bool isUnassigned
     ) public {
@@ -46,8 +40,6 @@ contract Jobs {
             operatingUnit: operatingUnit,
             officePostalCode: officePostalCode,
             totalHours: totalHours,
-            startDate: startDate,
-            endDate: endDate,
             clientId: clientId,
             isUnassigned: isUnassigned
         });
@@ -59,18 +51,12 @@ contract Jobs {
             operatingUnit,
             officePostalCode,
             totalHours,
-            startDate,
-            endDate,
             clientId,
             isUnassigned
         );
     }
 
-    function setNumber(uint256 newNumber) public {
-        number = newNumber;
-    }
-
-    function increment() public {
+    function increment() internal {
         number++;
     }
 }
