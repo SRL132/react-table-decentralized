@@ -2,6 +2,7 @@ import React, { Context, useContext } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import InfiniteScroll from 'react-infinite-scroller';
 import { ContextType, EntityConfig, FieldConfig } from '../config/main/schema';
+import AddButton from './AddButton';
 
 type TableProps = {
     entityConfig: EntityConfig
@@ -37,7 +38,7 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
         <div>
             {status === 'loading' && <h6>{'Loading...'}</h6>}
             {status === 'error' && <h6>{'There has been an error'}</h6>}
-
+            <AddButton className="position-absolute top-0 end-0"/>
             {isSuccess &&
                 <table className="table align-middle table-bordered table-striped table-hover table-responsive">
                     <thead className='bg-warning align-middle '>
