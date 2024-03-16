@@ -62,7 +62,7 @@ const jobConfig: EntityConfig = {
     },
     stats: [
         {
-            title: 'Data Insights',
+            title: 'Dataset Insights',
             divClass: 'bg-secondary rounded',
             statsList: [
                 {
