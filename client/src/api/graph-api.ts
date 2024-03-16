@@ -8,6 +8,10 @@ const GET_ACTIVE_ITEMS = gql`
       originalId
       operatingUnit
       officePostalCode
+      totalHours
+      clientId
+      operatingUnit
+      isUnassigned
     }
   }
 `;
@@ -19,12 +23,11 @@ const client = new ApolloClient({
 
 export const fetchJobs = async () => {
   const { data } = await client.query({ query: GET_ACTIVE_ITEMS });
-    console.log(data)
+  console.log(data);
   return data?.jobAddeds;
 };
 
 export const fetchAllJobs = async () => {
-    const { data } = await client.query({ query: GET_ACTIVE_ITEMS });
-    return data?.jobAddeds;
-  };
-  
+  const { data } = await client.query({ query: GET_ACTIVE_ITEMS });
+  return data?.jobAddeds;
+};
