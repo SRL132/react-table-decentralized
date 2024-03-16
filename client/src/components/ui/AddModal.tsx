@@ -34,12 +34,21 @@ const AddModal = ({ onClose, onSubmit, entityConfig }: AddModalProps) => {
                 .map((field: FieldConfig) => (
                   <div key={field.name} className="mb-3">
                     <label className="form-label">{field.label}</label>
-                    <input
-                      type={field.type === "text" ? "text" : "number"}
-                      name={field.name}
-                      onChange={(e) => handleInputChange(e, field)}
-                      className="form-control"
-                    />
+                    {field.type === "boolean" ? (
+                      <input
+                        type="checkbox"
+                        name={field.name}
+                        onChange={(e) => handleInputChange(e, field)}
+                        className="form-check-input"
+                      />
+                    ) : (
+                      <input
+                        type={field.type === "text" ? "text" : "number"}
+                        name={field.name}
+                        onChange={(e) => handleInputChange(e, field)}
+                        className="form-control"
+                      />
+                    )}
                   </div>
                 ))}
             </div>
