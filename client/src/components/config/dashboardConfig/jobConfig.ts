@@ -66,11 +66,6 @@ const jobConfig: EntityConfig = {
                     description: 'Data size: '
                 },
                 {
-                    comparisonArgs: ['officeCity'],
-                    comparisonType: 'getAmount',
-                    description: 'Number of cities:'
-                },
-                {
                     comparisonArgs: ['operatingUnit'],
                     comparisonType: 'getAmount',
                     description: 'Number of operating units:'
