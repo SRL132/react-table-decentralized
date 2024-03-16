@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@metamask/providers": "^16.0.0",
-    "ethers": "^6.11.1"
-  }
-}
