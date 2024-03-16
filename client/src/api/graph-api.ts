@@ -78,7 +78,7 @@ const getQuery = (
           (filterOption === "totalHours" || filterOption === "Jobs_id") &&
           !isNaN(Number(fetchOptions?.filterOptions?.[0]?.filterParam))
         ) {
-          return `{totalHours: ${fetchOptions?.filterOptions?.[0]?.filterParam}}`;
+          return `{${filterOption}: ${fetchOptions?.filterOptions?.[0]?.filterParam}}`;
         }
         if (filterOption !== "totalHours" && filterOption !== "Jobs_id") {
           return `{${filterOption}_starts_with: "${fetchOptions?.filterOptions?.[0]?.filterParam}"}`;
