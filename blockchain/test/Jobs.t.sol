@@ -5,7 +5,6 @@ import {Test, console} from "forge-std/Test.sol";
 import {Jobs, JobEvents} from "../src/Jobs.sol";
 
 contract JobsTest is Test, JobEvents {
-
     Jobs public jobs;
 
     function setUp() public {

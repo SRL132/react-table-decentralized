@@ -13,8 +13,7 @@ contract JobEvents {
     );
 }
 
-contract Jobs is JobEvents{
-
+contract Jobs is JobEvents {
     uint256 public number;
 
     struct Job {
