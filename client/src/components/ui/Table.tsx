@@ -18,7 +18,7 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
     const { data, status, hasNextPage, fetchNextPage, isSuccess
     } = useInfiniteQuery([entityConfig.infiniteQueryName, state],
         //@ts-ignore
-        ({ pageParam = 1 }) => entityConfig.fetch(pageParam, state), {
+        ({ pageParam = 1 }) => entityConfig.fetch(pageParam, state, entityConfig.fields), {
         getNextPageParam: (_lastPage, allPages) => {
             const nextPage = allPages.length + 1
             return nextPage

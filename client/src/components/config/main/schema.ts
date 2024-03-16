@@ -1,60 +1,78 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface EntityConfig {
-    fields: Record<string, FieldConfig>;
-    fetch: () => Promise<any>;
-    fetchAll: () => unknown;
-    infiniteQueryName: string;
-    normalQueryName: string;
-    stats?: StatConfig[];
+  fields: Record<string, FieldConfig>;
+  fetch: (
+    page: number | undefined,
+    fetchOptions: FetchOptions | undefined,
+    allFields: Record<string, FieldConfig>
+  ) => Promise<any>;
+  fetchAll: () => unknown;
+  infiniteQueryName: string;
+  normalQueryName: string;
+  stats?: StatConfig[];
 }
 
 export interface FieldConfig {
-    name: string;
-    label: string;
-    type: FieldType;
-    unique?: boolean;
-    searcheable?: boolean;
+  name: string;
+  label: string;
+  type: FieldType;
+  unique?: boolean;
+  searcheable?: boolean;
 }
 
 export interface StatConfig {
-    title: string;
-    statsList: stats[];
-    divClass: string;
+  title: string;
+  statsList: stats[];
+  divClass: string;
 }
 
 export type stats = {
-    comparisonArgs: any[];
-    comparisonType: FunctionType
-    description: string
-}
+  comparisonArgs: any[];
+  comparisonType: FunctionType;
+  description: string;
+};
 
 export type filterOptions = {
-    filterBy: string,
-    filterParam: string
-}
+  filterBy: string;
+  filterParam: string;
+};
 
 export interface FetchOptions {
-    itemsPerPage: number;
-    sortOptions?: SortOptions;
-    filterOptions?: FilterOptions[];
+  itemsPerPage: number;
+  sortOptions?: SortOptions;
+  filterOptions?: FilterOptions[];
 }
 
 export interface ContextType {
-    state: FetchOptions
-    dispatch: Dispatch<SetStateAction<FetchOptions>>
+  state: FetchOptions;
+  dispatch: Dispatch<SetStateAction<FetchOptions>>;
 }
 
 export type SortOptions = {
-    sortBy: string;
-    sortOrder: string
-}
+  sortBy: string;
+  sortOrder: string;
+};
 
 export type FilterOptions = {
-    filterBy: string,
-    filterParam: string
-}
+  filterBy: string;
+  filterParam: string;
+};
 
-
-export type FieldType = 'text' | 'integer' | 'float' | 'datetime' | 'boolean' | 'keyValueArray'
-export type FunctionType = 'getTop' | 'getPercentage' | 'getAmount' | 'getFilterBooleanAmount' | 'getDataSize' | 'getEarliestDeadline' | 'getNestedFieldWithMostByField' | 'getFieldWithMostByTopField' | 'getMostFrequentNestedArray'
+export type FieldType =
+  | "text"
+  | "integer"
+  | "float"
+  | "datetime"
+  | "boolean"
+  | "keyValueArray";
+export type FunctionType =
+  | "getTop"
+  | "getPercentage"
+  | "getAmount"
+  | "getFilterBooleanAmount"
+  | "getDataSize"
+  | "getEarliestDeadline"
+  | "getNestedFieldWithMostByField"
+  | "getFieldWithMostByTopField"
+  | "getMostFrequentNestedArray";
