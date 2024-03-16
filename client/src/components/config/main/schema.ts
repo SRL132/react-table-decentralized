@@ -56,5 +56,5 @@ export type FilterOptions = {
 }
 
 
-type FieldType = 'text' | 'integer' | 'float' | 'datetime' | 'boolean' | 'keyValueArray'
+export type FieldType = 'text' | 'integer' | 'float' | 'datetime' | 'boolean' | 'keyValueArray'
 export type FunctionType = 'getTop' | 'getPercentage' | 'getAmount' | 'getFilterBooleanAmount' | 'getDataSize' | 'getEarliestDeadline' | 'getNestedFieldWithMostByField' | 'getFieldWithMostByTopField' | 'getMostFrequentNestedArray'
