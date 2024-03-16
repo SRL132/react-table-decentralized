@@ -2,7 +2,7 @@ import {fetchJobs, fetchAllJobs} from "../../../api/graph-api";
 import { EntityConfig } from "../main/schema";
 
 export interface job {
-    id: number, //unique,
+    id: string, //unique,
     originalId: string, //unique,
     operatingUnit: string,
     officePostalCode: string,
@@ -18,7 +18,7 @@ const jobConfig: EntityConfig = {
     {
         Jobs_id: {
             name: 'id',
-            type: 'integer',
+            type: 'text',
             label: 'ID',
             searcheable: true,
             unique: true

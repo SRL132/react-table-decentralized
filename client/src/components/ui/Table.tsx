@@ -15,7 +15,6 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
     const [state, dispatch] = useContext(context)
     const fields = entityConfig.fields
 
-    console.log(fields)
     const { data, status, hasNextPage, fetchNextPage, isSuccess
     } = useInfiniteQuery([entityConfig.infiniteQueryName, state],
         //@ts-ignore
@@ -25,7 +24,7 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
             return nextPage
         }
     })
-    console.log(data)
+
     const sortData = (newSortOptions: { sortBy: string; }) => {
         if (state.sortOptions.sortBy !== newSortOptions.sortBy) {
             dispatch({ type: updateSorting, payload: { sortBy: newSortOptions.sortBy, sortOrder: 'asc' } })
