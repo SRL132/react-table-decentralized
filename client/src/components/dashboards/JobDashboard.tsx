@@ -9,7 +9,7 @@ import { UPDATE_FILTERS, UPDATE_SORTING } from '../reducers/job/jobReducerTypes'
 const JobDashboard = () => {
 
   return (
-    <div className='bg-light'>
+    <div>
       <Stats entityConfig={jobConfig} />
       <FilterGroup fields={jobConfig.fields} context={JobContext} updateFilters={UPDATE_FILTERS} />
       <Table entityConfig={jobConfig} context={JobContext} updateSorting={UPDATE_SORTING} />
