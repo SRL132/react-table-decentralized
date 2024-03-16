@@ -2,17 +2,9 @@
 pragma solidity ^0.8.20;
 
 contract Jobs {
-    event JobAdded(
-        uint256 id,
-        string originalId,
-        string operatingUnit,
-        string officePostalCode,
-        uint256 totalHours,
-        string clientId,
-        bool isUnassigned
-    );
 
     uint256 public number;
+
     struct Job {
         uint256 id;
         string originalId;
@@ -24,6 +16,16 @@ contract Jobs {
     }
 
     Job[] public jobs;
+
+    event JobAdded(
+        uint256 id,
+        string originalId,
+        string operatingUnit,
+        string officePostalCode,
+        uint256 totalHours,
+        string clientId,
+        bool isUnassigned
+    );
 
     function addJob(
         string memory originalId,
@@ -54,9 +56,5 @@ contract Jobs {
             clientId,
             isUnassigned
         );
-    }
-
-    function increment() internal {
-        number++;
     }
 }
