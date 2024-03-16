@@ -18,7 +18,6 @@ contract Jobs {
     Job[] public jobs;
 
     function addJob(
-        uint256 id,
         string memory originalId,
         string memory operatingUnit,
         string memory officePostalCode,
@@ -29,7 +28,7 @@ contract Jobs {
         bool isUnassigned
     ) public {
         Job memory newJob = Job({
-            id: id,
+            id: number,
             originalId: originalId,
             operatingUnit: operatingUnit,
             officePostalCode: officePostalCode,
@@ -41,6 +40,7 @@ contract Jobs {
         });
 
         jobs.push(newJob);
+        number++;
     }
 
     function setNumber(uint256 newNumber) public {
