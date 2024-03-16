@@ -28,11 +28,6 @@ const AddButton = ({ className, entityConfig }: AddButtonProps) => {
   };
 
   const handleAddJob = async (formData: Record<string, FieldConfig>) => {
-    if (window.ethereum == undefined) {
-      alert("Metamask wallet is not installed");
-      return;
-    }
-
     const contractABI = abi.abi; // replace with your contract ABI
     const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
     const privateKey = process.env.REACT_APP_PRIVATE_KEY as string;
