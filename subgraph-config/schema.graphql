@@ -1,0 +1,13 @@
+type JobAdded @entity(immutable: true) {
+  id: Bytes!
+  Jobs_id: BigInt! # uint256
+  originalId: String! # string
+  operatingUnit: String! # string
+  officePostalCode: String! # string
+  totalHours: BigInt! # uint256
+  clientId: String! # string
+  isUnassigned: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

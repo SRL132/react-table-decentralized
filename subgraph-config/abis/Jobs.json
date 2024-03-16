@@ -1,0 +1,95 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "originalId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "operatingUnit",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "officePostalCode",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "totalHours",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "clientId",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "isUnassigned",
+        "type": "bool"
+      }
+    ],
+    "name": "JobAdded",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "originalId", "type": "string" },
+      { "internalType": "string", "name": "operatingUnit", "type": "string" },
+      {
+        "internalType": "string",
+        "name": "officePostalCode",
+        "type": "string"
+      },
+      { "internalType": "uint256", "name": "totalHours", "type": "uint256" },
+      { "internalType": "string", "name": "clientId", "type": "string" },
+      { "internalType": "bool", "name": "isUnassigned", "type": "bool" }
+    ],
+    "name": "addJob",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "jobs",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "string", "name": "originalId", "type": "string" },
+      { "internalType": "string", "name": "operatingUnit", "type": "string" },
+      {
+        "internalType": "string",
+        "name": "officePostalCode",
+        "type": "string"
+      },
+      { "internalType": "uint256", "name": "totalHours", "type": "uint256" },
+      { "internalType": "string", "name": "clientId", "type": "string" },
+      { "internalType": "bool", "name": "isUnassigned", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "number",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
