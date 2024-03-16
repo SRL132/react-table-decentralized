@@ -35,13 +35,14 @@ const getQuery = (page = 0, fetchOptions: FetchOptions) => {
     (filterOption) =>
       filterOption.filterBy !== "q" && filterOption.filterParam !== ""
   );
-  const whereClause = filterOptions
-    ? filterOptions
-        .map((filterOption) => {
-          return `${filterOption.filterBy}: "${filterOption.filterParam}"`;
+  const whereClause = filterOptions?.map((filterOption) => {
+          if(filterOption.filterBy === "isUnassigned"){
+            return `${filterOption.filterBy}: ${filterOption.filterParam}`;
+          }
+          return `${filterOption.filterBy}_starts_with: "${filterOption.filterParam}"`;
         })
         .join(", ")
-    : "";
+
   console.log(whereClause);
   const skip = (page - 1) * fetchOptions.itemsPerPage;
     const orderBy = fetchOptions.sortOptions?.sortBy
