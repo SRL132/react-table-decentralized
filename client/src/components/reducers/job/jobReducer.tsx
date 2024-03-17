@@ -2,8 +2,8 @@ import { FetchOptions } from "../../../api/jobs-api"
 import { UPDATE_SORTING, UPDATE_FILTERS } from "./jobReducerTypes"
 
 export const initialState: FetchOptions = {
-    itemsPerPage: 10, sortOptions: {
-        sortBy: 'id',
+    itemsPerPage: 9, sortOptions: {
+        sortBy: 'Jobs_id',
         sortOrder: 'asc'
     }, filterOptions: [
         {

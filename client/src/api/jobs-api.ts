@@ -16,7 +16,7 @@ export type FilterOptions = {
 const BASE_URL = 'http://localhost:9000/'
 
 export const reactiveFetchJobs = async (page = 0, fetchOptions: FetchOptions = {
-    itemsPerPage: 10,
+    itemsPerPage: 9,
     sortOptions: {
         sortBy: 'id',
         sortOrder: 'asc'

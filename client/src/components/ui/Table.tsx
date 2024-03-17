@@ -15,14 +15,15 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
     const [state, dispatch] = useContext(context)
     const fields = entityConfig.fields
 
-    const { data, status, hasNextPage, fetchNextPage, isSuccess
+    const { data, status, hasNextPage, fetchNextPage, isSuccess, refetch
     } = useInfiniteQuery([entityConfig.infiniteQueryName, state],
         //@ts-ignore
         ({ pageParam = 1 }) => entityConfig.fetch(pageParam, state, entityConfig.fields), {
         getNextPageParam: (_lastPage, allPages) => {
-            const nextPage = allPages.length + 1
+            const nextPage = allPages.length
             return nextPage
-        }
+        },
+     //   refetchInterval: 60000, 
     })
 
     const sortData = (newSortOptions: { sortBy: string; }) => {
@@ -38,9 +39,10 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
         <div>
             {status === 'loading' && <h6>{'Loading...'}</h6>}
             {status === 'error' && <h6>{'There has been an error'}</h6>}
-            <AddButton entityConfig={entityConfig} className="position-absolute top-0 end-0"/>
+            {/* //@ts-ignore */}
+            <AddButton refetch={refetch} fetchOptions={state} entityConfig={entityConfig} className="position-absolute top-0 end-0"/>
             {isSuccess &&
-                <table className="table align-middle table-bordered table-striped table-hover table-responsive">
+                <table className="table align-middle table-bordered table-striped table-hover table-responsive  mb-50">
                     <thead className='bg-warning align-middle '>
                         <tr>
                             {Object.keys(fields)
@@ -90,7 +92,7 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
                 </table>
             }
             {/*@ts-ignore*/}
-            {isSuccess && data?.pages[0].length > 9 && <InfiniteScroll loadMore={fetchNextPage}
+            {isSuccess && data?.pages[0].length > 8 && <InfiniteScroll loadMore={fetchNextPage}
                 hasMore={hasNextPage}
                 loader={<h4>{'Loading...'}</h4>}
                 key={0}

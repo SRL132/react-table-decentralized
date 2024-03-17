@@ -121,9 +121,9 @@ const client = new ApolloClient({
 export const fetchJobs = async (
   page = 0,
   fetchOptions: FetchOptions = {
-    itemsPerPage: 10,
+    itemsPerPage: 9,
     sortOptions: {
-      sortBy: "id",
+      sortBy: "Jobs_id",
       sortOrder: "asc",
     },
     filterOptions: [
@@ -135,6 +135,7 @@ export const fetchJobs = async (
   },
   allFields: Record<string, FieldConfig>
 ) => {
+  console.log(page)
   const query = getQuery(page, fetchOptions, allFields);
 
   const { data } = await client.query({ query: query });

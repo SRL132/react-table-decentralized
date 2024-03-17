@@ -38,7 +38,7 @@ const AddModal = ({ onClose, onSubmit, entityConfig }: AddModalProps) => {
           <div className="modal-body">
             <div>
               {Object.values(entityConfig.fields)
-                .filter((field: FieldConfig) => field.name !== "id")
+                .filter((field: FieldConfig) => field.name !== "Jobs_id")
                 .map((field: FieldConfig) => (
                   <div key={field.name} className="mb-3">
                     <label className="form-label">{field.label}</label>
