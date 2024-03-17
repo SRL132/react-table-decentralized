@@ -90,7 +90,8 @@ const getQuery = (
     }
   }
 
-  const skip = (page - 1) * fetchOptions.itemsPerPage;
+  const skip = (page) * fetchOptions.itemsPerPage;
+
   const orderBy = fetchOptions.sortOptions?.sortBy;
   const orderDirection = fetchOptions.sortOptions?.sortOrder;
 

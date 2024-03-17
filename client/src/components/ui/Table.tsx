@@ -18,14 +18,16 @@ export default function Table({ entityConfig, context, updateSorting }: TablePro
     const { data, status, hasNextPage, fetchNextPage, isSuccess, refetch
     } = useInfiniteQuery([entityConfig.infiniteQueryName, state],
         //@ts-ignore
-        ({ pageParam = 1 }) => entityConfig.fetch(pageParam, state, entityConfig.fields), {
+        ({ pageParam = 0 }) => entityConfig.fetch(pageParam, state, entityConfig.fields), {
         getNextPageParam: (_lastPage, allPages) => {
+            console.log(allPages)
+            console.log(_lastPage)
             const nextPage = allPages.length
             return nextPage
         },
      //   refetchInterval: 60000, 
     })
-
+console.log(hasNextPage)
     const sortData = (newSortOptions: { sortBy: string; }) => {
         if (state.sortOptions.sortBy !== newSortOptions.sortBy) {
             dispatch({ type: updateSorting, payload: { sortBy: newSortOptions.sortBy, sortOrder: 'asc' } })
